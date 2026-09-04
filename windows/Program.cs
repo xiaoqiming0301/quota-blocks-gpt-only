@@ -44,6 +44,10 @@ internal static class Program
                 Write("weekly", snapshot.Weekly);
                 if (snapshot.Session is { } session) Write("session", session);
                 if (snapshot.Extra is { } extra) Write(snapshot.ExtraLabel ?? "extra", extra);
+                for (var i = 0; i < snapshot.AvailableResetCredits.Count; i++)
+                {
+                    Console.WriteLine($"  reset {i + 1,-3} expires {snapshot.AvailableResetCredits[i].ExpiresAt:yyyy-MM-dd HH:mm}");
+                }
             }
             catch (Exception e)
             {

@@ -10,11 +10,18 @@ public sealed record QuotaWindow(int UsedPercent, DateTime? ResetsAt)
         RemainingPercent <= 0 ? 0 : Math.Min(5, (int)Math.Ceiling(RemainingPercent / 20.0));
 }
 
+/// <summary>A one-time reset that restores the Codex weekly and five-hour limits.</summary>
+public sealed record ResetCredit(DateTime ExpiresAt);
+
 public sealed record QuotaSnapshot(
     QuotaWindow Weekly,
     QuotaWindow? Session = null,
     QuotaWindow? Extra = null,
-    string? ExtraLabel = null);
+    string? ExtraLabel = null,
+    IReadOnlyList<ResetCredit>? ResetCredits = null)
+{
+    public IReadOnlyList<ResetCredit> AvailableResetCredits => ResetCredits ?? [];
+}
 
 public abstract record QuotaState
 {

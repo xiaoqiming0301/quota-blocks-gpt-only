@@ -114,7 +114,8 @@ public static class CodexQuotaService
 
             return new QuotaSnapshot(
                 new QuotaWindow(weekly.UsedPercent, weekly.ResetsAt),
-                session is null ? null : new QuotaWindow(session.UsedPercent, session.ResetsAt));
+                session is null ? null : new QuotaWindow(session.UsedPercent, session.ResetsAt),
+                ResetCredits: ResetCredits(result));
         }
     }
 
@@ -133,6 +134,29 @@ public static class CodexQuotaService
             : null;
 
         return new RawWindow(Math.Clamp((int)Math.Round(used.GetDouble()), 0, 100), resetsAt, duration);
+    }
+
+    private static IReadOnlyList<ResetCredit> ResetCredits(JsonElement result)
+    {
+        if (!result.TryGetProperty("rateLimitResetCredits", out var container) ||
+            container.ValueKind != JsonValueKind.Object ||
+            !container.TryGetProperty("credits", out var credits) ||
+            credits.ValueKind != JsonValueKind.Array)
+        {
+            return [];
+        }
+
+        return credits.EnumerateArray()
+            .Where(credit => credit.ValueKind == JsonValueKind.Object &&
+                credit.TryGetProperty("status", out var status) &&
+                status.ValueKind == JsonValueKind.String &&
+                string.Equals(status.GetString(), "available", StringComparison.OrdinalIgnoreCase) &&
+                credit.TryGetProperty("expiresAt", out var expiry) &&
+                expiry.ValueKind == JsonValueKind.Number)
+            .Select(credit => new ResetCredit(
+                DateTimeOffset.FromUnixTimeSeconds(credit.GetProperty("expiresAt").GetInt64()).LocalDateTime))
+            .OrderBy(credit => credit.ExpiresAt)
+            .ToArray();
     }
 
     /// <summary>

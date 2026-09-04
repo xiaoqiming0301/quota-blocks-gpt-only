@@ -44,7 +44,11 @@ public sealed class DetailsForm : LayeredForm
     {
         public sealed record Heading(string Text) : Item;
 
+        public sealed record Section(string Text) : Item;
+
         public sealed record Line(string Label, string Value, string? Detail) : Item;
+
+        public sealed record ResetCredit(string Label, string ExpiresAt) : Item;
 
         public sealed record Note(string Text) : Item;
 
@@ -191,6 +195,18 @@ public sealed class DetailsForm : LayeredForm
                 {
                     items.Add(Line(snapshot.ExtraLabel ?? "Extra", extra));
                 }
+                if (snapshot.AvailableResetCredits.Count > 0)
+                {
+                    items.Add(new Item.Section(Loc.T("可用重置机会", "Available reset credits")));
+                    items.Add(new Item.Note(Loc.T("完全重置（每周 + 5 小时）", "Full reset (Weekly + 5-hour)")));
+                    for (var i = 0; i < snapshot.AvailableResetCredits.Count; i++)
+                    {
+                        var credit = snapshot.AvailableResetCredits[i];
+                        items.Add(new Item.ResetCredit(
+                            Loc.T($"重置机会 {i + 1}", $"Reset credit {i + 1}"),
+                            Loc.T($"到期 {Loc.ResetDate(credit.ExpiresAt)}", $"expires {Loc.ResetDate(credit.ExpiresAt)}")));
+                    }
+                }
                 break;
             }
             case QuotaState.Unavailable unavailable:
@@ -231,10 +247,19 @@ public sealed class DetailsForm : LayeredForm
                         S(IconSize + 6f, scale) + TextWidth(g, heading.Text, headingFont));
                     height += S(HeadingHeight, scale);
                     break;
+                case Item.Section section:
+                    fullRowWidth = Math.Max(fullRowWidth, TextWidth(g, section.Text, quotaFont));
+                    height += S(LineHeight, scale);
+                    break;
                 case Item.Line line:
                     quotaLeftWidth = Math.Max(quotaLeftWidth,
                         S(10f, scale) + TextWidth(g, line.Label, quotaFont));
                     quotaRightWidth = Math.Max(quotaRightWidth, TextWidth(g, RightText(line), quotaFont));
+                    height += S(LineHeight, scale);
+                    break;
+                case Item.ResetCredit credit:
+                    quotaLeftWidth = Math.Max(quotaLeftWidth, TextWidth(g, credit.Label, quotaFont));
+                    quotaRightWidth = Math.Max(quotaRightWidth, TextWidth(g, credit.ExpiresAt, quotaFont));
                     height += S(LineHeight, scale);
                     break;
                 case Item.Note note:
@@ -303,6 +328,15 @@ public sealed class DetailsForm : LayeredForm
                     y += S(HeadingHeight, scale);
                     break;
                 }
+                case Item.Section section:
+                {
+                    var lineHeight = S(LineHeight, scale);
+                    var textHeight = g.MeasureString(section.Text, quotaFont, PointF.Empty, StringFormat.GenericTypographic).Height;
+                    g.DrawString(section.Text, quotaFont, textBrush,
+                        x + S(10f, scale), y + (lineHeight - textHeight) / 2f, StringFormat.GenericTypographic);
+                    y += lineHeight;
+                    break;
+                }
                 case Item.Line line:
                 {
                     var lineHeight = S(LineHeight, scale);
@@ -313,6 +347,18 @@ public sealed class DetailsForm : LayeredForm
                     var right = RightText(line);
                     var rightWidth = TextWidth(g, right, quotaFont);
                     g.DrawString(right, quotaFont, textBrush, size.Width - S(PadX, scale) - rightWidth, top, StringFormat.GenericTypographic);
+                    y += lineHeight;
+                    break;
+                }
+                case Item.ResetCredit credit:
+                {
+                    var lineHeight = S(LineHeight, scale);
+                    var textHeight = g.MeasureString(credit.Label, quotaFont, PointF.Empty, StringFormat.GenericTypographic).Height;
+                    var top = y + (lineHeight - textHeight) / 2f;
+                    g.DrawString(credit.Label, quotaFont, textBrush, x + S(10f, scale), top, StringFormat.GenericTypographic);
+                    var expiryWidth = TextWidth(g, credit.ExpiresAt, quotaFont);
+                    g.DrawString(credit.ExpiresAt, quotaFont, textBrush,
+                        size.Width - S(PadX, scale) - expiryWidth, top, StringFormat.GenericTypographic);
                     y += lineHeight;
                     break;
                 }
@@ -394,7 +440,7 @@ public sealed class DetailsForm : LayeredForm
             var height = items[i] switch
             {
                 Item.Heading => S(HeadingHeight, scale),
-                Item.Line or Item.Note => S(LineHeight, scale),
+                Item.Section or Item.Line or Item.ResetCredit or Item.Note => S(LineHeight, scale),
                 Item.Separator => S(SeparatorHeight, scale),
                 _ => S(ActionHeight, scale),
             };
