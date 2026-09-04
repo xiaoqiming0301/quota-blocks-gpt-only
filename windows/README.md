@@ -20,7 +20,7 @@ Quota Blocks（仅保留 GPT 的个人修改版）是一个 Windows 任务栏组
 
 | 有可用重置机会 | 没有可用重置机会 |
 | --- | --- |
-| ![显示两次可用重置机会](docs/reset-credits-available.png) | ![没有可用重置机会时的紧凑面板](docs/reset-credits-unavailable.png) |
+| ![显示两次可用重置机会](docs/reset-credits-available.png) | ![没有可用重置机会时的紧凑面板](docs/gpt-version-panel.png) |
 
 ## 系统要求
 

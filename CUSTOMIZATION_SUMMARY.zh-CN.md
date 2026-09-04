@@ -40,7 +40,7 @@
 
 | 有可用重置机会 | 没有可用重置机会 |
 | --- | --- |
-| ![显示两次可用重置机会](windows/docs/reset-credits-available.png) | ![没有可用重置机会时的紧凑面板](windows/docs/reset-credits-unavailable.png) |
+| ![显示两次可用重置机会](windows/docs/reset-credits-available.png) | ![没有可用重置机会时的紧凑面板](windows/docs/gpt-version-panel.png) |
 
 ## 版权
 
