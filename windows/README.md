@@ -4,6 +4,14 @@ Quota Blocks（仅保留 GPT 的个人修改版）是一个 Windows 任务栏组
 
 ![详细面板与任务栏](docs/gpt-version-panel.png)
 
+## 颜色与对比
+
+![三种额度颜色状态](docs/quota-color-states.png)
+
+| 原程序任务栏效果 | 仅保留 GPT 的个人修改版 |
+| --- | --- |
+| ![原程序任务栏](docs/original-taskbar.png) | ![GPT-only 任务栏](docs/gpt-only-taskbar.png) |
+
 ## 系统要求
 
 - Windows 10 或 Windows 11；

@@ -21,6 +21,18 @@
 | 20% - 79% | 黄色 |
 | 0% - 19% | 红色 |
 
+![三种额度颜色状态](windows/docs/quota-color-states.png)
+
+## 效果对比
+
+| 原程序任务栏效果 | 仅保留 GPT 的个人修改版 |
+| --- | --- |
+| ![原程序任务栏](windows/docs/original-taskbar.png) | ![GPT-only 任务栏](windows/docs/gpt-only-taskbar.png) |
+
+当前版本的详细面板与任务栏效果：
+
+![GPT-only 详细面板与任务栏](windows/docs/gpt-version-panel.png)
+
 ## 安装
 
 需要 Windows 10/11、[.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)，以及已安装并登录的 Codex / ChatGPT 桌面应用。

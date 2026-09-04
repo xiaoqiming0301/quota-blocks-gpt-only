@@ -23,6 +23,16 @@
 
 ![Quota Blocks GPT 个人修改版的详细面板与任务栏](windows/docs/gpt-version-panel.png)
 
+## 额度颜色示例
+
+![三种额度颜色状态](windows/docs/quota-color-states.png)
+
+## 与原程序对比
+
+| 原程序任务栏效果 | 仅保留 GPT 的个人修改版 |
+| --- | --- |
+| ![原程序任务栏](windows/docs/original-taskbar.png) | ![GPT-only 任务栏](windows/docs/gpt-only-taskbar.png) |
+
 ## 版权
 
 上述改动仅是个人定制。原项目的作者署名、版权、资源和 [MIT 许可证](LICENSE) 继续保留，版权归原作者 NathanCheng685 所有。
