@@ -14,6 +14,14 @@ Quota Blocks（仅保留 GPT 的个人修改版）是一个 Windows 任务栏组
 | --- | --- |
 | ![原程序任务栏](docs/original-taskbar.png) | ![GPT-only 任务栏](docs/gpt-only-taskbar.png) |
 
+## 重置机会
+
+账户有可用机会时，额度信息与菜单之间会显示独立区块；没有机会时，该区块会隐藏，面板保持紧凑。
+
+| 有可用重置机会 | 没有可用重置机会 |
+| --- | --- |
+| ![显示两次可用重置机会](docs/reset-credits-available.png) | ![没有可用重置机会时的紧凑面板](docs/reset-credits-unavailable.png) |
+
 ## 系统要求
 
 - Windows 10 或 Windows 11；

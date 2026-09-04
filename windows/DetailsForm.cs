@@ -197,6 +197,7 @@ public sealed class DetailsForm : LayeredForm
                 }
                 if (snapshot.AvailableResetCredits.Count > 0)
                 {
+                    items.Add(new Item.Separator());
                     items.Add(new Item.Section(Loc.T("可用重置机会", "Available reset credits")));
                     items.Add(new Item.Note(Loc.T("完全重置（每周 + 5 小时）", "Full reset (Weekly + 5-hour)")));
                     for (var i = 0; i < snapshot.AvailableResetCredits.Count; i++)

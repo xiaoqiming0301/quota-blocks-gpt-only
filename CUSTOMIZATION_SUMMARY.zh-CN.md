@@ -34,6 +34,14 @@
 | --- | --- |
 | ![原程序任务栏](windows/docs/original-taskbar.png) | ![GPT-only 任务栏](windows/docs/gpt-only-taskbar.png) |
 
+## 重置机会显示
+
+有可用机会时，额度与菜单之间会显示独立的重置机会区块；没有机会时该区块隐藏，面板保持紧凑。
+
+| 有可用重置机会 | 没有可用重置机会 |
+| --- | --- |
+| ![显示两次可用重置机会](windows/docs/reset-credits-available.png) | ![没有可用重置机会时的紧凑面板](windows/docs/reset-credits-unavailable.png) |
+
 ## 版权
 
 上述改动仅是个人定制。原项目的作者署名、版权、资源和 [MIT 许可证](LICENSE) 继续保留，版权归原作者 NathanCheng685 所有。
