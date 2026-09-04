@@ -1,8 +1,8 @@
-# GPT Quota Bar（个人修改版本）
+# Quota Blocks（仅保留 GPT 的个人修改版）
 
 一个只显示 ChatGPT / Codex 剩余额度的 Windows 任务栏工具。它以紧凑的色块和百分比展示当前额度，点击任务栏组件即可查看 5 小时与周额度的重置时间。
 
-![GPT Quota Bar 的详细面板与 Windows 任务栏显示](windows/docs/gpt-version-panel.png)
+![Quota Blocks GPT 个人修改版的详细面板与 Windows 任务栏显示](windows/docs/gpt-version-panel.png)
 
 ## 这个版本的调整
 

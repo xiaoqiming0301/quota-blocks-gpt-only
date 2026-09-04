@@ -1,4 +1,4 @@
-# GPT Quota Bar 修改记录
+# Quota Blocks（仅保留 GPT 的个人修改版）修改记录
 
 本版本以 [NathanCheng685/quota-blocks](https://github.com/NathanCheng685/quota-blocks) 为基础，面向个人 Windows 使用习惯进行调整。
 
@@ -21,7 +21,7 @@
 
 ## 实际效果
 
-![GPT Quota Bar 的详细面板与任务栏](windows/docs/gpt-version-panel.png)
+![Quota Blocks GPT 个人修改版的详细面板与任务栏](windows/docs/gpt-version-panel.png)
 
 ## 版权
 
