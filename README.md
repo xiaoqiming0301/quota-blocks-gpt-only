@@ -51,10 +51,10 @@
 程序会发布到：
 
 ```text
-%LOCALAPPDATA%\Programs\GPTVersion
+%LOCALAPPDATA%\Programs\GPT Version
 ```
 
-可执行文件为 `GPTVersion.exe`。重新运行安装脚本即可覆盖更新。
+可执行文件为 `GPT Version.exe`。重新运行安装脚本即可覆盖更新。
 
 更多技术说明见 [Windows 使用说明](windows/README.md)，本次改动范围见 [中文修改记录](CUSTOMIZATION_SUMMARY.zh-CN.md)。
 

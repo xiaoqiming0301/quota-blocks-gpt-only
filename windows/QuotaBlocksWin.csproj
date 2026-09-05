@@ -6,7 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>GPTVersion</AssemblyName>
+    <AssemblyName>GPT Version</AssemblyName>
+    <ApplicationIcon>Resources\app-icon.ico</ApplicationIcon>
     <RootNamespace>QuotaBlocks</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>

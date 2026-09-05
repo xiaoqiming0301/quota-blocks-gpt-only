@@ -36,7 +36,7 @@ Quota Blocks（仅保留 GPT 的个人修改版）是一个 Windows 任务栏组
 .\scripts\install.ps1
 ```
 
-安装脚本会编译并安装程序到 `%LOCALAPPDATA%\Programs\GPTVersion`，然后注册开机启动并打开程序。再次运行脚本会直接更新。
+安装脚本会编译并安装程序到 `%LOCALAPPDATA%\Programs\GPT Version`，然后注册开机启动并打开程序。再次运行脚本会直接更新。
 
 仅构建而不安装：
 
@@ -47,7 +47,7 @@ dotnet build QuotaBlocksWin.csproj -c Release --nologo
 检查本地额度读取路径：
 
 ```powershell
-.\bin\Release\net8.0-windows\GPTVersion.exe --probe
+.\bin\Release\net8.0-windows\GPT Version.exe --probe
 ```
 
 ## 使用
@@ -58,7 +58,7 @@ dotnet build QuotaBlocksWin.csproj -c Release --nologo
 - “打开 Codex 额度页面”在浏览器中打开对应页面；
 - “退出”关闭程序。
 
-组件每两分钟自动刷新，无需手动刷新。执行 `GPTVersion.exe --probe` 时不会显示界面，适用于诊断本地额度读取。
+组件每两分钟自动刷新，无需手动刷新。执行 `GPT Version.exe --probe` 时不会显示界面，适用于诊断本地额度读取。
 
 ## 数据与隐私
 
